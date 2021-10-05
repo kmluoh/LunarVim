@@ -271,7 +271,8 @@ function setup_lvim() {
   cp "$LUNARVIM_RUNTIME_DIR/lvim/utils/installer/config.example-no-ts.lua" \
     "$LUNARVIM_CONFIG_DIR/config.lua"
 
-  nvim -u "$LUNARVIM_RUNTIME_DIR/lvim/init.lua" --headless \
+  env LUNARVIM_RUNTIME_DIR=$LUNARVIM_RUNTIME_DIR LUNARVIM_CONFIG_DIR=$LUNARVIM_CONFIG_DIR \
+    nvim -u "$LUNARVIM_RUNTIME_DIR/lvim/init.lua" --headless \
     -c 'autocmd User PackerComplete quitall' \
     -c 'PackerSync'
 
